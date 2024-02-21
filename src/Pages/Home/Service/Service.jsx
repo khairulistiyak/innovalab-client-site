@@ -3,7 +3,7 @@ import { FaReact } from "react-icons/fa";
 
 const Service = () => {
   return (
-    <div>
+    <div className="my-10">
       <h1 className="text-2xl font-bold text-center">
         Our <span className="text-warning">Service</span>
       </h1>
