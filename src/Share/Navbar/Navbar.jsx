@@ -39,7 +39,7 @@ const Navbar = () => {
             <div>
               <h1 className="uppercase">Innovate</h1>
 
-              <h2 className="text-orange-500 uppercase">Lab</h2>
+              <h2 className="text-warning uppercase">Lab</h2>
             </div>
           </a>
         </div>
