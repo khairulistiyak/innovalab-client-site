@@ -1,35 +1,56 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
-import app from "../../firebase/firebase.config";
-
 import useAuth from "../../Hooks/useAuth";
+import { useForm } from "react-hook-form";
 
 const SignUp = () => {
-  const { user } = useAuth();
+  const { signUp, user } = useAuth();
   console.log(user);
+  const { register, handleSubmit } = useForm();
 
+  const onSubmit = (data) => {
+    console.log(data);
+    signUp(data.email, data.password).then((result) => {
+      console.log(result.user);
+    });
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-yellow-50">
         <div className="card shrink-0 w-full max-w-sm shadow-2xl ">
-          <form className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                name="displayName"
+                type="text"
+                placeholder="Full Name"
+                className="input bg-yellow-50 "
+                {...register("displayName", { required: true, maxLength: 20 })}
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
-              <input type="email" placeholder="email" className="input bg-yellow-50 " required />
+              <input name="email" type="text" placeholder="Your Email" className="input bg-yellow-50 " {...register("email", { required: true })} />
             </div>
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input type="password" placeholder="password" className="input " required />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
+              <input
+                type="password"
+                placeholder="password"
+                className="input"
+                {...register("password", {
+                  pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$/,
+                })}
+              />
             </div>
             <div className="form-control mt-6">
               <button type="submit" className="btn btn-warning">
