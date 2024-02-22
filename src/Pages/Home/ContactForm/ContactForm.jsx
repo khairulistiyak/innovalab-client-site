@@ -3,6 +3,7 @@ import React from "react";
 const ContactForm = () => {
   return (
     <div className="bg-yellow-50">
+      <h1 className="text-4xl text-center pt-20  font-bold">feedback</h1>
       <form className="w-full grid lg:justify-center px-5 py-20 ">
         <div className="lg:flex gap gap-10 ">
           <div className="mb-5">
