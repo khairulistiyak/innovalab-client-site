@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import app from "../../firebase/firebase.config";
+
+import useAuth from "../../Hooks/useAuth";
 
 const SignUp = () => {
+  const { user } = useAuth();
+  console.log(user);
+
   return (
     <div>
       <div className="hero min-h-screen bg-yellow-50">
