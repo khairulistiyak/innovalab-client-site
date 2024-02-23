@@ -7,7 +7,11 @@ import { useForm } from "react-hook-form";
 const SignUp = () => {
   const { signUp, user } = useAuth();
   console.log(user);
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -31,6 +35,7 @@ const SignUp = () => {
                 className="input bg-yellow-50 "
                 {...register("displayName", { required: true, maxLength: 20 })}
               />
+              {errors.displayName?.type === "required" && <p className="text-red-600">Enter your name</p>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -38,7 +43,7 @@ const SignUp = () => {
               </label>
               <input name="email" type="text" placeholder="Your Email" className="input bg-yellow-50 " {...register("email", { required: true })} />
             </div>
-
+            {errors.displayName?.type === "required" && <p className="text-red-600">Enter your Email</p>}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
@@ -47,11 +52,16 @@ const SignUp = () => {
                 type="password"
                 placeholder="password"
                 className="input"
-                {...register("password", {
-                  pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$/,
-                })}
+                {...register(
+                  "password",
+                  { required: true },
+                  {
+                    pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$/,
+                  }
+                )}
               />
             </div>
+            {errors.password?.type === "required" && <p className="text-red-600">Plz password</p>}
             <div className="form-control mt-6">
               <button type="submit" className="btn btn-warning">
                 SignUp
