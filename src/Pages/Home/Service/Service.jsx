@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaMicrosoft, FaPenNib, FaReact } from "react-icons/fa";
 import ServiceBanner from "./ServiceBanner";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Service = () => {
+  const [axiosSecure] = useAxiosSecure();
+  const [services, setServices] = useState([]);
+  const res = axiosSecure.get("/services");
+  if (res) {
+    console.log(res.data);
+  }
+
   return (
     <div className="my-16  grid justify-around ">
       <h1 className="text-3xl my-16 font-bold text-center">

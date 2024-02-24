@@ -1,0 +1,46 @@
+[
+  {
+    "category": "Graphic Design",
+    "service_title": "Logo Design",
+    "description": "We offer professional logo design services tailored to your business. Our designers will create a unique and memorable logo that reflects your brand identity.",
+    "image": "https://cdn-icons-png.freepik.com/512/1185/1185316.png"
+  },
+
+  {
+    "category": "Web Design",
+    "service_title": "Responsive Web Design",
+    "description": "Ensure your website looks great on all devices with our responsive web design services. We'll create a user-friendly and visually appealing website that works seamlessly across desktops, tablets, and mobile devices.",
+    "image": "https://cdn1.iconfinder.com/data/icons/soleicons-line-vol-1/64/reactjs_javascript_library_atom_atomic_react-512.png"
+  },
+  {
+    "category": "Web Development",
+    "service_title": "Frontend Development",
+    "description": "Our frontend developers specialize in creating interactive and user-friendly interfaces using HTML, CSS, and JavaScript. We'll bring your website to life with smooth animations and intuitive navigation.",
+    "image": "https://static-00.iconduck.com/assets.00/web-developer-illustration-1004x1024-wcqgbag3.png"
+  },
+
+  {
+    "category": "Mobile App Development",
+    "service_title": "iOS App Development",
+    "description": "Turn your app idea into a reality with our iOS app development services. Our team of experienced developers will create a high-quality and user-friendly iOS app that meets your requirements and exceeds your expectations.",
+    "image": "https://cdn-icons-png.freepik.com/512/7075/7075373.png"
+  },
+  {
+    "category": "Software Development",
+    "service_title": "Custom Software Development",
+    "description": "Streamline your business operations with our custom software development services. We'll create a tailor-made software solution that meets your unique requirements and helps you achieve your business goals.",
+    "image": "https://www.shutterstock.com/image-vector/development-vector-icon-600nw-743169709.jpg"
+  },
+  {
+    "category": "IT Consulting",
+    "service_title": "Digital Transformation Consulting",
+    "description": "Stay ahead of the curve with our digital transformation consulting services. Our experts will assess your current IT infrastructure, identify areas for improvement, and recommend innovative solutions to help you achieve digital excellence.",
+    "image": "https://cdn-icons-png.flaticon.com/512/2145/2145635.png"
+  },
+  {
+    "category": "IT Support",
+    "service_title": "Managed IT Services",
+    "description": "Focus on your core business activities while we take care of your IT infrastructure. Our managed IT services include proactive monitoring, regular maintenance, and 24/7 support to keep your systems running smoothly.",
+    "image": "https://cdn-icons-png.flaticon.com/512/5225/5225075.png"
+  }
+]
