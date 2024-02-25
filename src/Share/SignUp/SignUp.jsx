@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { signUp, user } = useAuth();
-  console.log(user);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,7 +17,17 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log(data);
     signUp(data.email, data.password).then((result) => {
-      console.log(result.user);
+      const { user } = result;
+      if (user.email) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${user?.email} Successfully SignUp`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      }
     });
   };
   return (
