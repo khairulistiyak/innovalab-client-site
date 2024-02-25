@@ -3,12 +3,13 @@ import { FaMicrosoft, FaPenNib, FaReact } from "react-icons/fa";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 
 const Service = () => {
   const axiosSecure = useAxiosSecure();
   const [services, setServices] = useState([]);
-  // const res = axiosSecure.get("/services");
-  // console.log(res.data);
+  const { user } = useAuth();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,6 +20,9 @@ const Service = () => {
         setServices(data);
       });
   }, []);
+  const handelAddToCart = (user) => {
+    console.log(user);
+  };
   return (
     <div className="my-16  grid justify-around ">
       <h1 className="text-3xl my-16 font-bold text-center">
@@ -37,6 +41,9 @@ const Service = () => {
               </p>
               <div className="card-actions"></div>
             </div>
+            <button onClick={() => handelAddToCart(user)} className="btn btn-warning">
+              Add to cart
+            </button>
           </div>
         ))}
       </div>
