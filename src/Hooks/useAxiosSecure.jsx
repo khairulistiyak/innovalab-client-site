@@ -3,7 +3,9 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const useAxiosSecure = () => {
-  const axiosSecure = axios.create({ baseURL: "http://localhost:5000" });
+  const axiosSecure = axios.create({
+    baseURL: "http://localhost:5000",
+  });
   const navigate = useNavigate();
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {

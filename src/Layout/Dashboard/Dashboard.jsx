@@ -7,7 +7,7 @@ const Dashboard = () => {
   const { user } = useAuth();
   const navItem = (
     <>
-      {/* ADMIN  */}
+      {/* TODO: ADMIN  */}
       {user?.email && (
         <>
           <li>
