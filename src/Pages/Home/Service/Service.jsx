@@ -1,28 +1,42 @@
 import React, { useEffect, useState } from "react";
-import { FaMicrosoft, FaPenNib, FaReact } from "react-icons/fa";
+// import { FaMicrosoft, FaPenNib, FaReact } from "react-icons/fa";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
+// import Swal from "sweetalert2";
 import useAuth from "../../../Hooks/useAuth";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Service = () => {
   const axiosSecure = useAxiosSecure();
-  const [services, setServices] = useState([]);
+  const [services = [], setServices] = useState([]);
+
   const { user } = useAuth();
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-    const url = "http://localhost:5000/services";
+    const url = `http://localhost:5000/services/`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setServices(data);
       });
   }, []);
-  const handelAddToCart = (user) => {
-    console.log(user);
+
+  const handelAddToCart = (service) => {
+    axiosSecure.post("/carts", { service }).then((res) => {
+      console.log(res.data);
+      if (res.data.insertedId) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
   };
+
   return (
     <div className="my-16  grid justify-around ">
       <h1 className="text-3xl my-16 font-bold text-center">
@@ -41,7 +55,7 @@ const Service = () => {
               </p>
               <div className="card-actions"></div>
             </div>
-            <button onClick={() => handelAddToCart(user)} className="btn btn-warning">
+            <button onClick={() => handelAddToCart(service)} className="btn btn-warning">
               Add to cart
             </button>
           </div>

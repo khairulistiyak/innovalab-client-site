@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import { FaCartPlus } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, LogOut } = useAuth();
@@ -27,8 +28,15 @@ const Navbar = () => {
       <li>
         <a>Contact Us</a>
       </li>
+      {user && (
+        <li>
+          <Link to={"/dashboard"}>Dashboard</Link>
+        </li>
+      )}
       <li>
-        <Link to={"/dashboard"}>Dashboard</Link>
+        <Link to={"/dashboard"}>
+          <FaCartPlus className="text-2xl bg-warning"></FaCartPlus>
+        </Link>
       </li>
     </>
   );

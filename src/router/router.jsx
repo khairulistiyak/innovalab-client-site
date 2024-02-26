@@ -5,6 +5,7 @@ import Login from "../Share/Login/Login";
 import SignUp from "../Share/SignUp/SignUp";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import BookingList from "../Pages/Dashboard/BookingList/BookingList";
+import Service from "../Pages/Home/Service/Service";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/signUp",
         element: <SignUp />,
+      },
+      {
+        // path: "/services",
+        // element: <Service></Service>,
       },
     ],
   },

@@ -6,7 +6,7 @@ const useAxiosSecure = () => {
   const axiosSecure = axios.create({
     baseURL: "http://localhost:5000",
   });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {
       return config;
@@ -19,7 +19,7 @@ const useAxiosSecure = () => {
         return Promise.reject(error);
       }
     );
-  });
+  }, [axiosSecure]);
   return axiosSecure;
 };
 

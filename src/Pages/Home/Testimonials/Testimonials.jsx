@@ -14,7 +14,7 @@ import { FreeMode, Pagination } from "swiper/modules";
 const Testimonials = () => {
   const [reviews = [], setReviews] = useState([]);
 
-  console.log(reviews);
+  // console.log(reviews);
   const isSmallDevice = useMediaQuery({ query: "(max-width: 767px)" });
   const isMediumDevice = useMediaQuery({ query: "(min-width: 768px) and (max-width: 1023px)" });
   const isLargeDevice = useMediaQuery({ query: "(min-width: 1024px)" });
