@@ -10,7 +10,7 @@ const useCarts = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  const { data: carts = [] } = useQuery({
+  const { data: carts = [], refetch } = useQuery({
     queryKey: ["cart"],
     queryFn: async () => {
       if (user.email) {
@@ -21,7 +21,7 @@ const useCarts = () => {
       }
     },
   });
-  return { carts };
+  return { carts, refetch };
 };
 
 export default useCarts;

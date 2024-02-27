@@ -6,10 +6,12 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useCarts from "../../../Hooks/useCarts";
 
 const Service = () => {
   const axiosSecure = useAxiosSecure();
   const [services = [], setServices] = useState([]);
+  const { refetch } = useCarts();
 
   const { user } = useAuth();
 
@@ -33,6 +35,7 @@ const Service = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        refetch();
       }
     });
   };
