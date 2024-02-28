@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
 import useAuth from "./useAuth";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+
 import useAxiosSecure from "./useAxiosSecure";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const useCarts = () => {
   const axiosSecure = useAxiosSecure();
