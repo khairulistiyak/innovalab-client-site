@@ -1,12 +1,23 @@
 import React from "react";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const SocialLogin = () => {
   const { googleLogin } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const handleGoogleLogin = () => {
     googleLogin().then((result) => {
-      console.log(result.user);
+      const user = result.user;
+      if (user) {
+        axiosSecure.post("/users", {
+          email: user.email,
+          displayName: user.displayName,
+          uid: user.uid,
+          creationTime: user.metadata.creationTime,
+          lastSignInTime: user.metadata.lastSignInTime,
+        });
+      }
     });
   };
   return (

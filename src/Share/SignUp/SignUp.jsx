@@ -20,17 +20,18 @@ const SignUp = () => {
     signUp(data.email, data.password).then((result) => {
       const { user } = result;
       if (user.email && user.uid) {
-        const userInfo = {
-          email: user.email,
-          displayName: user.displayName,
-          uid: user.uid,
-          creationTime: user.metadata.creationTime,
-          lastSignInTime: user.metadata.lastSignInTime,
-        };
-        console.log("user post data", user.metadata.creationTime);
-        axiosSecure.post("/users", { userInfo }).then((data) => {
-          console.log("post data", data.data);
-        });
+        // console.log("user post data", user.metadata.creationTime);
+        axiosSecure
+          .post("/users", {
+            email: user.email,
+            displayName: user.displayName,
+            uid: user.uid,
+            creationTime: user.metadata.creationTime,
+            lastSignInTime: user.metadata.lastSignInTime,
+          })
+          .then((data) => {
+            // console.log("post data", data.data);
+          });
 
         Swal.fire({
           position: "center",

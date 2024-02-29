@@ -7,11 +7,11 @@ import useCarts from "../../Hooks/useCarts";
 const Navbar = () => {
   const { user, LogOut } = useAuth();
   const { carts, refetch } = useCarts();
-  console.log(carts);
+  // console.log(carts);
   const handleLogout = () => {
     LogOut()
       .then(() => {
-        console.log("logout");
+        // console.log("logout");
       })
       .catch(() => {
         // console.log(error);
