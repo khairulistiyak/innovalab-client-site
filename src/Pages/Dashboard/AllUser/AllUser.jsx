@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
+import { FaUser } from "react-icons/fa";
 
 const AllUser = () => {
   const axiosSecure = useAxiosSecure();
@@ -12,6 +13,7 @@ const AllUser = () => {
       return res.data;
     },
   });
+  //   moment time
   const momentTime = (timeAndDate) => {
     const timestamp = timeAndDate;
     const formattedDate = moment(timestamp, "ddd, DD MMM YYYY HH:mm:ss z").format("YYYY-MM-DD HH:mm");
@@ -31,7 +33,7 @@ const AllUser = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Joined on</th>
-              <th></th>
+              <th> Role</th>
             </tr>
           </thead>
           <tbody>
@@ -49,7 +51,9 @@ const AllUser = () => {
                 <td>{user.email}</td>
                 <td> {momentTime(user.lastSignInTime)}</td>
                 <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
+                  <button className="btn btn-warning ">
+                    <FaUser className="text-2xl"></FaUser>
+                  </button>
                 </th>
               </tr>
             ))}

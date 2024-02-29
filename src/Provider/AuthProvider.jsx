@@ -39,6 +39,7 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
   // watch user
+  //  TODO : User Profile Update : FireBase
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
