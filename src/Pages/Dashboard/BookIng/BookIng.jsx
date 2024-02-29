@@ -6,7 +6,6 @@ import useAuth from "../../../Hooks/useAuth";
 const BookIng = () => {
   const { carts } = useCarts();
   const { user } = useAuth();
-  console.log(carts);
   return (
     <div>
       <div className="overflow-x-auto">

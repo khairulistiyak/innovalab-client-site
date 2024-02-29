@@ -3,7 +3,6 @@ import useAuth from "../../../Hooks/useAuth";
 
 const BookingList = ({ item, index }) => {
   const { user } = useAuth();
-  console.log(item);
   const { service_title, category, description, image, uni: _id } = item;
   return (
     <tbody>

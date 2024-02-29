@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCartPlus, FaComment, FaHome } from "react-icons/fa";
+import { FaCartPlus, FaComment, FaHome, FaUser, FaUsers } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
@@ -13,6 +13,12 @@ const Dashboard = () => {
           <li>
             <Link to={"/"} className="2xl">
               <FaHome></FaHome> User Home
+            </Link>
+          </li>
+
+          <li className="text-orange-500">
+            <Link to={"/dashboard/allUsers"}>
+              <FaUsers></FaUsers> All Users
             </Link>
           </li>
 
