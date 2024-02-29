@@ -4,10 +4,12 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const SignUp = () => {
   const { signUp, user } = useAuth();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -15,10 +17,21 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     signUp(data.email, data.password).then((result) => {
       const { user } = result;
-      if (user.email) {
+      if (user.email && user.uid) {
+        const userInfo = {
+          email: user.email,
+          displayName: user.displayName,
+          uid: user.uid,
+          creationTime: user.metadata.creationTime,
+          lastSignInTime: user.metadata.lastSignInTime,
+        };
+        console.log("user post data", user.metadata.creationTime);
+        axiosSecure.post("/users", { userInfo }).then((data) => {
+          console.log("post data", data.data);
+        });
+
         Swal.fire({
           position: "center",
           icon: "success",
@@ -26,7 +39,7 @@ const SignUp = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/");
+        // navigate("/");
       }
     });
   };

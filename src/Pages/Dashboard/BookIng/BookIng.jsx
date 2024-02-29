@@ -1,9 +1,11 @@
 import React from "react";
 import useCarts from "../../../Hooks/useCarts";
 import BookingList from "../BookingList/BookingList";
+import useAuth from "../../../Hooks/useAuth";
 
 const BookIng = () => {
   const { carts } = useCarts();
+  const { user } = useAuth();
   console.log(carts);
   return (
     <div>
@@ -11,11 +13,12 @@ const BookIng = () => {
         <table className="table">
           {/* head */}
           <thead>
+            {/* service_title, category, description, image, uni: _id */}
             <tr>
               <th>#</th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Service</th>
+              <th>Category</th>
+              <th>Email</th>
               <th></th>
             </tr>
           </thead>
@@ -23,7 +26,6 @@ const BookIng = () => {
           {carts?.map((item, index) => (
             <BookingList item={item} index={index} key={item._id}></BookingList>
           ))}
-          {/* foot */}
         </table>
       </div>
     </div>

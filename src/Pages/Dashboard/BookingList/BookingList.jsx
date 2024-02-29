@@ -1,11 +1,12 @@
 import React from "react";
+import useAuth from "../../../Hooks/useAuth";
 
 const BookingList = ({ item, index }) => {
+  const { user } = useAuth();
   console.log(item);
   const { service_title, category, description, image, uni: _id } = item;
   return (
     <tbody>
-      {/* row 1 */}
       <tr>
         <th>{index + 1}</th>
         <td>
@@ -21,12 +22,11 @@ const BookingList = ({ item, index }) => {
           </div>
         </td>
         <td>{category}</td>
-        <td>Purple</td>
+        <td>{user?.email}</td>
         <th>
           <button className="btn btn-ghost btn-xs">details</button>
         </th>
       </tr>
-      {/* row 4 */}
     </tbody>
   );
 };

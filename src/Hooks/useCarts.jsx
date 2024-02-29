@@ -10,7 +10,7 @@ const useCarts = () => {
   const navigate = useNavigate();
 
   const { data: carts, refetch } = useQuery({
-    queryKey: ["cart"],
+    queryKey: ["cart", user],
 
     queryFn: async () => {
       if (user.email) {
