@@ -17,7 +17,7 @@ const Dashboard = () => {
           </li>
 
           <li className="text-orange-500">
-            <Link to={""}>
+            <Link to={"/dashboard/booking"}>
               <FaCartPlus> </FaCartPlus> Book
             </Link>
           </li>

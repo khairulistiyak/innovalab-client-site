@@ -9,7 +9,7 @@ const useServices = () => {
   const { data: services = [], refetch } = useQuery({
     queryKey: ["services", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`services?email`);
+      const res = await axiosSecure.get(`services`);
       return res.data;
     },
   });

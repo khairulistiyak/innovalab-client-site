@@ -6,6 +6,7 @@ import SignUp from "../Share/SignUp/SignUp";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import BookingList from "../Pages/Dashboard/BookingList/BookingList";
 import Service from "../Pages/Home/Service/Service";
+import BookIng from "../Pages/Dashboard/BookIng/BookIng";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,9 +31,13 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "dashboard",
+    path: "/dashboard",
     element: <Dashboard />,
     children: [
+      {
+        path: "booking",
+        element: <BookIng />,
+      },
       {
         path: "bookingList",
         element: <BookingList />,

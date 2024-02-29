@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { login } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -15,7 +17,16 @@ const Login = () => {
 
   const onSubmit = (data) => {
     login(data.email, data.password).then((result) => {
-      console.log(result.user);
+      if (result.user.email) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${result.user.email} Login success`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      }
     });
 
     console.log(data);

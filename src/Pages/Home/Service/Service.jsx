@@ -12,7 +12,9 @@ const Service = () => {
   const { refetch } = useCarts();
 
   const handleAddToCart = (service) => {
-    axiosSecure.post("/carts", { service }).then((res) => {
+    const { _id, category, service_title, description, image } = service;
+
+    axiosSecure.post("/carts", { service_title, category, description, image, uni: _id }).then((res) => {
       console.log(res.data);
       if (res.data.insertedId) {
         Swal.fire({

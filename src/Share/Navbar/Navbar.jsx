@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { FaCartPlus } from "react-icons/fa";
 import useCarts from "../../Hooks/useCarts";
@@ -7,14 +7,14 @@ import useCarts from "../../Hooks/useCarts";
 const Navbar = () => {
   const { user, LogOut } = useAuth();
   const { carts, refetch } = useCarts();
-  // console.log(carts);
+  console.log(carts);
   const handleLogout = () => {
     LogOut()
       .then(() => {
         console.log("logout");
       })
       .catch(() => {
-        console.log(error);
+        // console.log(error);
       });
   };
   const navMenu = (
@@ -37,9 +37,9 @@ const Navbar = () => {
         </li>
       )}
       <li>
-        <Link to={"/dashboard"}>
+        <Link to={"/dashboard/booking"}>
           <FaCartPlus className="text-2xl "></FaCartPlus>
-          <div className="badge badge-secondary">{carts.length}</div>
+          <div className="badge badge-secondary">{carts?.length}</div>
         </Link>
       </li>
     </>
